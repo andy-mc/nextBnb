@@ -1,6 +1,10 @@
+import Header from './Header'
+
 const Layout = props => {
   return (
     <div>
+      <Header></Header>
+      
       <main>{props.children}</main>
 
       <style jsx global>{`
@@ -9,7 +13,7 @@ const Layout = props => {
           font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
-          font-size: 10px;
+          font-size: 14px;
           line-height: 1.5;
           color: #333;
         }
@@ -17,7 +21,6 @@ const Layout = props => {
 
       <style jsx>{`
         main {
-          font-size: 1rem;
           position: relative;
           max-width: 56em;
           background-color: white;
