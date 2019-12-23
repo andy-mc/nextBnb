@@ -5,7 +5,7 @@ const Layout = props => {
     <div>
       <Header></Header>
       
-      <main>{props.children}</main>
+      <main>{props.content}</main>
 
       <style jsx global>{`
         body {

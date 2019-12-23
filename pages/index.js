@@ -3,7 +3,7 @@ import House from '../components/House'
 import Layout from '../components/Layout'
 
 const Index = () => (
-  <Layout>
+  <Layout content={
     <div>
       <h2>Places to stay</h2>
 
@@ -22,6 +22,7 @@ const Index = () => (
         }
       `}</style>
     </div>
+  }>
   </Layout>
 )
 
