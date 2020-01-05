@@ -1,25 +1,27 @@
-import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
-import dateFnsFormat from "date-fns/format";
-import dateFnsParse from "date-fns/parse";
-import { useState } from "react";
+import { useState } from 'react'
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import 'react-day-picker/lib/style.css'
+import { DateUtils } from 'react-day-picker'
 
-const format = "dd MMM yyyy";
+import dateFnsFormat from 'date-fns/format'
+import dateFnsParse from 'date-fns/parse'
 
 const parseDate = (str, format, locale) => {
-  const parsed = dateFnsParse(str, format, new Date(), { locale });
-  return DateUtils.isDate(parsed) ? parsed : null;
-};
+  const parsed = dateFnsParse(str, format, new Date(), { locale })
+  return DateUtils.isDate(parsed) ? parsed : null
+}
 
 const formatDate = (date, format, locale) =>
-  dateFnsFormat(date, format, { locale });
+  dateFnsFormat(date, format, { locale })
+
+const format = 'dd MMM yyyy'
 
 export default () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
 
   return (
-    <div className="date-range-picker-container">
+    <div className='date-range-picker-container'>
       <div>
         <label>From:</label>
         <DayPickerInput
@@ -27,6 +29,16 @@ export default () => {
           format={format}
           parseDate={parseDate}
           placeholder={`${dateFnsFormat(new Date(), format)}`}
+          dayPickerProps={{
+            modifiers: {
+              disabled: {
+                before: new Date()
+              }
+            }
+          }}
+          onDayChange={day => {
+            setStartDate(day)
+          }}
         />
       </div>
       <div>
@@ -36,30 +48,36 @@ export default () => {
           format={format}
           parseDate={parseDate}
           placeholder={`${dateFnsFormat(new Date(), format)}`}
+          dayPickerProps={{
+            modifiers: {
+              disabled: {
+                before: new Date()
+              }
+            }
+          }}
+          onDayChange={day => {
+            setEndDate(day)
+          }}
         />
       </div>
-      <style jsx>
-        {`
-          .date-range-picker-container div {
-            display: grid;
-            border: 1px solid #ddd;
-            grid-template-columns: 30% 70%;
-            padding: 10px;
-          }
-          label {
-            padding-top: 10px;
-          }
-        `}
-      </style>
-      <style jsx global>
-        {`
-          .DayPickerInput input {
-            width: 120px;
-            padding: 10px;
-            font-size: 16px;
-          }
-        `}
-      </style>
+      <style jsx>{`
+        .date-range-picker-container div {
+          display: grid;
+          border: 1px solid #ddd;
+          grid-template-columns: 30% 70%;
+          padding: 10px;
+        }
+        label {
+          padding-top: 10px;
+        }
+      `}</style>
+      <style jsx global>{`
+        .DayPickerInput input {
+          width: 120px;
+          padding: 10px;
+          font-size: 16px;
+        }
+      `}</style>
     </div>
-  );
-};
+  )
+}
