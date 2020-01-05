@@ -47,11 +47,10 @@ const Header = () => (
 
       .nav-container {
         border-bottom: 1px solid #eee;
-        height: 51px;
+        height: 50px;
       }
 
       img {
-        margin: 10px 0px 0px 20px;
         float: left;
       }
 

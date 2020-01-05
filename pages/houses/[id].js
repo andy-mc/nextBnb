@@ -7,9 +7,9 @@ import houses from '../houses.json'
 const House = props => (
   <Layout
     content={
-      <div className="container">
+      <div className='container'>
         <Head>
-          <title>{props.house.title} :D !!</title>
+          <title>{props.house.title}</title>
         </Head>
         <article>
           <img src={props.house.picture} width='100%' alt='House picture' />
@@ -43,11 +43,11 @@ const House = props => (
   />
 )
 
-House.getInitialProps = ({query}) => {
+House.getInitialProps = ({ query }) => {
   const { id } = query
 
   return {
-    house: houses.filter(house => house.id === id )[0]
+    house: houses.filter(house => house.id === id)[0]
   }
 }
 

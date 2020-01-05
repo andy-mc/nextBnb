@@ -3,8 +3,7 @@ import Header from './Header'
 const Layout = props => {
   return (
     <div>
-      <Header></Header>
-      
+      <Header />
       <main>{props.content}</main>
 
       <style jsx global>{`
@@ -29,7 +28,6 @@ const Layout = props => {
           box-sizing: border-box;
         }
       `}</style>
-
     </div>
   )
 }
